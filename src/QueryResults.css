@@ -1,0 +1,72 @@
+.query-title {
+    text-align: center;
+    width: 100vw;
+    color: white;
+    font-family: "VT323", monospace;
+    font-size: 50px;
+    position: relative;
+    top: 10%;
+}
+
+.query-list {
+    list-style-type: none;
+    /*background-color: #727272;*/
+    position: relative;
+    left: 50%;
+    transform: translate(-50%);
+    top: 12%;
+    width: 80vw;
+    resize: horizontal;
+    margin: 0;
+    padding: 0;
+    padding-bottom: 30px;
+}
+.query-list li {
+    padding-left: 15px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    line-height: 15px;
+    cursor: pointer;
+    border: solid 1px transparent;
+    transition: 0.15s;
+}
+.query-list li:not(.query-list-count):hover {
+    border-radius: 8px;
+    border: solid 1px rgba(255, 255, 255, 0.1);
+}
+.query-list li:not(.query-list-count):active {
+    scale: 0.995;
+}
+.query-list li:not(:first-of-type) {
+    margin-top: 10px;
+}
+.query-list li a {
+    color: rgba(30, 144, 255, 0.6);
+    font-size: 14px;
+    position: relative;
+}
+.query-list span {
+    position: absolute;
+    right: 10px;
+    margin-top: -7px;
+    text-align: center;
+}
+.query-list span small {
+    font-size: 10px;
+    color: rgba(128, 128, 128, 0.66);
+    cursor: pointer;
+}
+.query-list span small:hover {
+    text-decoration: underline;
+}
+.query-list-count {
+    padding-bottom: 0 !important;
+    padding-top: 0 !important;
+    margin: 0 !important;
+    color: rgba(255, 255, 255, 0.5);
+    cursor: revert !important;
+    line-height: 0 !important;
+}
+.query-list-count span {
+    margin-top: 0;
+}

@@ -1,0 +1,48 @@
+.similar-topic-title {
+    text-align: center;
+    font-size: 25px;
+    margin: 0;
+    position: relative;
+    top: 25%;
+    font-family: "VT323", monospace;
+}
+.similar-title {
+    text-align: center;
+    font-size: 40px;
+    margin: 0;
+    position: relative;
+    top: 25%;
+}
+.similar-topics {
+    width: 70vw;
+    height: fit-content;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%);
+    top: 30%;
+    text-align: center;
+}
+.similar-topics a {
+    text-decoration: none;
+    color: dodgerblue;
+    position: relative;
+    transition: 0.2s;
+}
+.similar-topics a:not(:first-of-type) {
+    margin-left: 10px;
+}
+.similar-topics a:hover {
+    color: #69b5ff;
+}
+.similar-topics a:active {
+    color: white;
+}
+.similar-topics span {
+    position: relative;
+    margin-left: 10px;
+    color: rgba(128, 128, 128, 0.75);
+}
+.similar-topics span:last-of-type {
+    display: none;
+}
+
