@@ -19,7 +19,7 @@ function Home() {
         <div className="bg" id={bg_id}>
             <h1 className="title">Neural</h1>
             <h2 className="subtitle">Open-source learning platform</h2>
-            <input type="text" className="searchbox" autoComplete="off" id={input_id} value={query} onChange={e => {
+            <input type="text" className="searchbox" placeholder="Learn..." autoComplete="off" id={input_id} value={query} onChange={e => {
                 setQuery(e.target.value)
                 let query_topics = []
                 if (e.target.value.length > 0) {
