@@ -2,8 +2,8 @@ import "./QueryResults.css"
 import "./SimilarQueryResults.css"
 import "./Home.css"
 import {Link, useParams} from "react-router-dom";
-import {useEffect, useId} from "react";
-import {topics} from "./Topics.jsx";
+import {useEffect, useId, useState} from "react";
+import {topics, topics_urls} from "./Topics.jsx";
 import {distalgo} from "./damulenvensteih.js";
 
 export default function QueryResults() {
@@ -11,55 +11,15 @@ export default function QueryResults() {
     const bg_id = useId()
     const title_id = useId()
 
+    const [results, setResults] = useState({})
+
     useEffect(() => {
         document.getElementById(title_id).innerText = params.query
+
+        setResults(topics_urls.filter(i => i.topic === params.query)[0])
     }, [params.query])
 
     if (!topics.includes(params.query)) {
-        // https://stackoverflow.com/a/36566052
-        // eslint-disable-next-line no-inner-declarations
-        function editDistance(s1, s2) {
-            s1 = s1.toLowerCase();
-            s2 = s2.toLowerCase();
-
-            let costs = [];
-            for (let i = 0; i <= s1.length; i++) {
-                let lastValue = i;
-                for (let j = 0; j <= s2.length; j++) {
-                    if (i === 0)
-                        costs[j] = j;
-                    else {
-                        if (j > 0) {
-                            let newValue = costs[j - 1];
-                            if (s1.charAt(i - 1) !== s2.charAt(j - 1))
-                                newValue = Math.min(Math.min(newValue, lastValue),
-                                    costs[j]) + 1;
-                            costs[j - 1] = lastValue;
-                            lastValue = newValue;
-                        }
-                    }
-                }
-                if (i > 0)
-                    costs[s2.length] = lastValue;
-            }
-            return costs[s2.length];
-        }
-        // eslint-disable-next-line no-inner-declarations
-        function similarity(s1, s2) {
-            let longer = s1;
-            let shorter = s2;
-            if (s1.length < s2.length) {
-                longer = s2;
-                shorter = s1;
-            }
-            let longerLength = longer.length;
-            if (longerLength === 0) {
-                return 1.0;
-            }
-            return (longerLength - editDistance(longer, shorter)) / parseFloat(longerLength);
-        }
-
-
         let sim_topics = []
         for (let i = 0; i < topics.length; i++) {
             if (distalgo(params.query, topics[i], true) < 13) {
@@ -70,7 +30,7 @@ export default function QueryResults() {
         return (
             <>
                 <h1 id={title_id} className="similar-topic-title"></h1>
-                <h2 className="similar-title">Similar topics</h2>
+                <h2 className="similar-title">Similar topics ?</h2>
                 <div className="similar-topics">
                     {
                         sim_topics.map((value, index) => {
@@ -89,57 +49,23 @@ export default function QueryResults() {
                 <h1 id={title_id} className="query-title">{params.query}</h1>
                 <ul className="query-list">
                     <li className="query-list-count">
-                        29 Learning resources
+                        {results?.urls?.length} Learning resources
                         <span>Knowledge Density</span>
                     </li>
-                    <li>
-                        Learn Python in Y minutes
-                        <br/>
-                        <a>https://learnxinyminutes.com/docs/python/</a>
-                        <span>89%</span>
-                    </li>
-                    <li>
-                        Learn Python in Y minutes
-                        <br/>
-                        <a>https://learnxinyminutes.com/docs/python/</a>
-                        <span>89%</span>
-                    </li>
-                    <li>
-                        Learn Python in Y minutes
-                        <br/>
-                        <a>https://learnxinyminutes.com/docs/python/</a>
-                        <span>89%</span>
-                    </li>
-                    <li>
-                        Learn Python in Y minutes
-                        <br/>
-                        <a>https://learnxinyminutes.com/docs/python/</a>
-                        <span>89%</span>
-                    </li>
-                    <li>
-                        Learn Python in Y minutes
-                        <br/>
-                        <a>https://learnxinyminutes.com/docs/python/</a>
-                        <span>89%</span>
-                    </li>
-                    <li>
-                        Learn Python in Y minutes
-                        <br/>
-                        <a>https://learnxinyminutes.com/docs/python/</a>
-                        <span>89%</span>
-                    </li>
-                    <li>
-                        Learn Python in Y minutes
-                        <br/>
-                        <a>https://learnxinyminutes.com/docs/python/</a>
-                        <span>89%</span>
-                    </li>
-                    <li>
-                        Learn Python in Y minutes
-                        <br/>
-                        <a>https://learnxinyminutes.com/docs/python/</a>
-                        <span>89%</span>
-                    </li>
+                    {
+                        results?.urls?.map((value, index) => {
+                            return <>
+                                <a href={value} target="_blank">
+                                    <li key={index}>
+                                        {results.titles[index]}
+                                        <br/>
+                                        <a>{value}</a>
+                                        <span>{results.densities[index]}%</span>
+                                    </li>
+                                </a>
+                            </>
+                        })
+                    }
                 </ul>
             </div>
         </>
