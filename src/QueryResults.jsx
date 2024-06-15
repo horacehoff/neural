@@ -5,6 +5,7 @@ import {Link, useParams} from "react-router-dom";
 import {useEffect, useId, useState} from "react";
 import {topics, topics_urls} from "./Topics.jsx";
 import {distalgo} from "./damulenvensteih.js";
+import Popup from "./Popup.jsx";
 
 export default function QueryResults() {
     let params = useParams()
@@ -50,7 +51,7 @@ export default function QueryResults() {
                 <ul className="query-list">
                     <li className="query-list-count">
                         {results?.urls?.length} Learning resources
-                        <span>Knowledge Density</span>
+                        <span onClick={() => document.getElementById("popup").style.display = "block"}>Knowledge Density</span>
                     </li>
                     {
                         results?.urls?.map((value, index) => {
@@ -68,6 +69,7 @@ export default function QueryResults() {
                     }
                 </ul>
             </div>
+            <Popup/>
         </>
     )
 }
