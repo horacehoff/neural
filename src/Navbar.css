@@ -39,11 +39,12 @@
 }
 
 .about {
-    right: 138px;
+    /*right: 138px;*/
+    right: 80px;
 }
 
 .credits {
-    right: 76px;
+    /*right: 76px;*/
 }
 
 .credits-page {
