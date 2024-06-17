@@ -5,7 +5,6 @@ import './index.css'
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import Navbar from "./Navbar.jsx";
 import QueryResults from "./QueryResults.jsx";
-import Credits from "./Credits.jsx";
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
@@ -15,7 +14,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
             <Route path="/" element={<Home/>}/>
             <Route path="/learn/:query" element={<QueryResults/>}/>
 
-            <Route path="/credits" element={<Credits/>}/>
+            {/*<Route path="/credits" element={<Credits/>}/>*/}
         </Routes>
     </BrowserRouter>
   </React.StrictMode>,
