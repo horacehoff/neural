@@ -58,7 +58,7 @@ export default function QueryResults() {
                             return <>
                                 <a href={value} target="_blank">
                                     <li key={index}>
-                                        {results.titles[index]}
+                                        <div>{results.titles[index]}</div>
                                         <br/>
                                         <a>{value}</a>
                                         <span>{results.densities[index]}%</span>

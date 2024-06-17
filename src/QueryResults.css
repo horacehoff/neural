@@ -84,3 +84,43 @@
 .query-list-count span:hover {
     text-decoration: underline;
 }
+.query-list a li div {
+    display: inline;
+}
+
+
+@media screen and (max-width: 600px) {
+    .query-list a li a {
+        width: 60vw;
+        display: inline-block;
+        overflow: visible;
+        overflow-wrap: break-word;
+    }
+    .query-list a li div {
+        width: 60vw;
+        display: inline-block;
+        overflow: visible;
+        overflow-wrap: break-word;
+    }
+}
+@media screen and (max-width: 450px) {
+    .query-list-count {
+        text-align: left;
+        font-size: 14px;
+    }
+    .query-list-count span {
+        position: absolute;
+        text-align: right;
+        right: 0;
+    }
+}
+@media screen and (max-width: 370px) {
+    .query-list-count {
+        font-size: 13px;
+    }
+}
+@media screen and (max-width: 335px) {
+    .query-list-count {
+        font-size: 12px;
+    }
+}
