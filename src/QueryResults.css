@@ -50,10 +50,15 @@
     -webkit-appearance: none;
     color: inherit;
 }
-.query-list li a {
+.query-list a li a {
     color: rgba(30, 144, 255, 0.6);
     font-size: 14px;
     position: relative;
+    width: 70vw;
+    display: inline-block;
+    overflow: visible;
+    overflow-wrap: break-word;
+    padding-right: 5px;
 }
 .query-list span {
     position: absolute;
@@ -85,7 +90,9 @@
     text-decoration: underline;
 }
 .query-list a li div {
-    display: inline;
+    display: inline-block;
+    width: 70vw;
+    padding-right: 5px;
 }
 
 
@@ -98,9 +105,6 @@
     }
     .query-list a li div {
         width: 60vw;
-        display: inline-block;
-        overflow: visible;
-        overflow-wrap: break-word;
     }
 }
 @media screen and (max-width: 450px) {

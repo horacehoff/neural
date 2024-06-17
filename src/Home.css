@@ -64,9 +64,9 @@
   position: absolute;
   width: 237px;
   left: 50%;
-  top: 60.25%;
+  top: 60.3%;
   transform: translate(-50%, -50%);
-  height: fit-content;
+  height: max-content;
   background-color: rgba(255, 255, 255, 0.1);
   border-radius: 6px;
   z-index: 10;
@@ -88,7 +88,7 @@
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  /*height: 100%;*/
   padding: 0;
   margin: 0;
   list-style-type: none;
@@ -161,4 +161,10 @@
 .searchbtn:active {
   padding: 5px 2px;
   border-color: white;
+}
+
+@supports (-webkit-hyphens:none) {
+  .searchbox-autocomplete {
+    margin-top: 5px;
+  }
 }
