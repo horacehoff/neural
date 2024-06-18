@@ -1,12 +1,12 @@
 @font-face {
   font-family: "VT323", monospace;
-  src: url("fonts/VT323-Regular.woff2");
+  src: url("fonts/VT323-Regular.woff2") format("woff2");
   font-style: normal;
   font-weight: 400;
 }
 @font-face {
   font-family: "Inter", sans-serif;
-  src: url("fonts/InterVariable.woff2");
+  src: url("fonts/InterVariable.woff2") format("woff2");
   font-style: normal;
   font-weight: normal;
 }
