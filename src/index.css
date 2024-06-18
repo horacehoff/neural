@@ -1,3 +1,16 @@
+@font-face {
+  font-family: "VT323", monospace;
+  src: url("fonts/VT323-Regular.woff2");
+  font-style: normal;
+  font-weight: 400;
+}
+@font-face {
+  font-family: "Inter", sans-serif;
+  src: url("fonts/InterVariable.woff2");
+  font-style: normal;
+  font-weight: normal;
+}
+
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;

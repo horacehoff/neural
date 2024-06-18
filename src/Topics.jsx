@@ -40,8 +40,8 @@ export const topics_urls = [
     },
     {
         topic: "Economics",
-        urls: ["https://www.learn-economics.co.uk"],
-        titles: ["Learn economics | Home"],
-        densities: [65]
+        urls: ["https://www.learn-economics.co.uk","https://www.lynalden.com/what-is-money/",'https://www.thoughtco.com/economics-for-beginners-4140372'],
+        titles: ["Learn economics | Home","What is Money, Anyway? - Lyn Alden",'Economics for Beginners: Understanding the Basics'],
+        densities: [65,75,68]
     }
 ]
