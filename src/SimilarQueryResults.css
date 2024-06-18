@@ -12,6 +12,8 @@
     margin: 0;
     position: relative;
     top: 25%;
+    font-family: "Inter", sans-serif;
+    font-weight: bold;
 }
 .similar-topics {
     width: 70vw;

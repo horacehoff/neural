@@ -10,9 +10,8 @@
   src: url("fonts/InterVariable.woff2") format("woff2"),
   url("fonts/InterVariable.woff") format("woff");
   font-style: normal;
-  font-weight: normal;
+  font-weight: normal 500 bold;
 }
-
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
