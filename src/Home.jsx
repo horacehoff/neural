@@ -18,7 +18,9 @@ function Home() {
     <>
         <div className="bg" id={bg_id}>
             <h1 className="title">Neural</h1>
-            <h2 className="subtitle"><sup style={{fontSize: "10px"}}>(soon)</sup>Open-source learning platform</h2>
+            <h2 className="subtitle">
+                {/*<sup style={{fontSize: "10px"}}>(soon)</sup>*/}
+                Learning platform for those who<br/>have a thirst for knowledge</h2>
             <input type="text" className="searchbox" placeholder="Learn..." autoComplete="off" id={input_id} value={query} onChange={e => {
                 setQuery(e.target.value)
                 let query_topics = []
