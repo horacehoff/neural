@@ -1,6 +1,6 @@
 import './Home.css'
 import {Link, useNavigate} from "react-router-dom";
-import {useId, useState, useEffect} from "react";
+import {useEffect, useId, useState} from "react";
 import {topics} from "./Topics.jsx";
 
 
@@ -30,18 +30,19 @@ function Home() {
             let topics_length = document.querySelectorAll(".searchbox-autocomplete.searchbox-autocomplete-visible ul a").length
             if (topics_length > 0) {
                 document.getElementById(searchbox_autocomplete_id).classList.add("searchbox-autocomplete-visible")
-                let dims = document.getElementById(input_id).getBoundingClientRect();
+                let dims = document.getElementById(input_id);
+                let top = dims.getBoundingClientRect().top + document.documentElement.scrollTop
                 if (topics_length === 1) {
-                    document.getElementById(searchbox_autocomplete_id).style.top = dims.top+50+"px"
+                    document.getElementById(searchbox_autocomplete_id).style.top = top+50+"px"
                 }
                 if (topics_length === 2) {
-                    document.getElementById(searchbox_autocomplete_id).style.top = dims.top+67+"px"
+                    document.getElementById(searchbox_autocomplete_id).style.top = top+67+"px"
                 }
                 if (topics_length === 3) {
-                    document.getElementById(searchbox_autocomplete_id).style.top = dims.top+84+"px"
+                    document.getElementById(searchbox_autocomplete_id).style.top = top+84+"px"
                 }
                 if (topics_length === 4) {
-                    document.getElementById(searchbox_autocomplete_id).style.top = dims.top+101+"px"
+                    document.getElementById(searchbox_autocomplete_id).style.top = top+101+"px"
                 }
             }
         }, 100)

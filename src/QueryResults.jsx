@@ -22,12 +22,12 @@ export default function QueryResults() {
 
     if (!topics.includes(params.query)) {
         let sim_topics = []
+        let ranked = []
         for (let i = 0; i < topics.length; i++) {
-            if (distalgo(params.query, topics[i], true) < 13) {
-                sim_topics.push(topics[i])
-            }
-            console.log(distalgo(params.query, topics[i], true)+topics[i])
+            ranked.push([topics[i], distalgo(params.query, topics[i], true)])
         }
+        ranked.sort(function(a, b){return a[1] - b[1]})
+        sim_topics.push(ranked[0][0], ranked[1][0], ranked[2][0], ranked[3][0], ranked[4][0])
         return (
             <>
                 <h1 id={title_id} className="similar-topic-title"></h1>
@@ -56,8 +56,8 @@ export default function QueryResults() {
                     {
                         results?.urls?.map((value, index) => {
                             return <>
-                                <a href={value} target="_blank">
-                                    <li key={index}>
+                                <a key={index} href={value} target="_blank">
+                                    <li>
                                         <div>{results.titles[index]}</div>
                                         <br/>
                                         <a>{value}</a>
