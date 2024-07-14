@@ -1,7 +1,8 @@
 import './Home.css'
 import {Link, useNavigate} from "react-router-dom";
-import {useId, useState} from "react";
+import {useId, useState, useEffect} from "react";
 import {topics} from "./Topics.jsx";
+
 
 function Home() {
     const navigate = useNavigate()
@@ -14,19 +15,54 @@ function Home() {
 
     const [autocompleteTopics, setAutocompleteTopics] = useState([])
     const [isHovering, setIsHovering] = useState(false)
+
+    // credit for this function goes to https://codepen.io/ondrabus/pen/WNGaVZN?editors=0010
+    function debounce(func, timeout = 300){
+        let timer;
+        return (...args) => {
+            clearTimeout(timer);
+            timer = setTimeout(() => { func.apply(this, args); }, timeout);
+        };
+    }
+
+    useEffect(() => {
+        const handleResize = debounce(() => {
+            let topics_length = document.querySelectorAll(".searchbox-autocomplete.searchbox-autocomplete-visible ul a").length
+            if (topics_length > 0) {
+                document.getElementById(searchbox_autocomplete_id).classList.add("searchbox-autocomplete-visible")
+                let dims = document.getElementById(input_id).getBoundingClientRect();
+                if (topics_length === 1) {
+                    document.getElementById(searchbox_autocomplete_id).style.top = dims.top+50+"px"
+                }
+                if (topics_length === 2) {
+                    document.getElementById(searchbox_autocomplete_id).style.top = dims.top+67+"px"
+                }
+                if (topics_length === 3) {
+                    document.getElementById(searchbox_autocomplete_id).style.top = dims.top+84+"px"
+                }
+                if (topics_length === 4) {
+                    document.getElementById(searchbox_autocomplete_id).style.top = dims.top+101+"px"
+                }
+            }
+        }, 100)
+
+        window.addEventListener('resize', handleResize);
+
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        }
+    }, [])
     return (
     <>
         <div className="bg" id={bg_id}>
             <h1 className="title">Neural</h1>
             <h2 className="subtitle">
-                {/*<sup style={{fontSize: "10px"}}>(soon)</sup>*/}
                 Learning platform for those who<br/>have a thirst for knowledge</h2>
             <input type="text" className="searchbox" placeholder="Learn..." autoComplete="off" id={input_id} value={query} onChange={e => {
                 setQuery(e.target.value)
                 let query_topics = []
                 if (e.target.value.length > 0) {
                     for (let i = 0;i < topics.length; i++) {
-                        // console.log(topics[i])
                         let topics_len = topics[i].slice(0, e.target.value.length)
                         if (topics_len.toLowerCase() === e.target.value.toLowerCase() && topics_len.length <= e.target.value.length && query_topics.length < 4) {
                             query_topics.push(topics[i])
@@ -39,18 +75,18 @@ function Home() {
                 setAutocompleteTopics(query_topics)
                 if (query_topics.length > 0) {
                     document.getElementById(searchbox_autocomplete_id).classList.add("searchbox-autocomplete-visible")
-                    // let one_li_height_percentage = 33.5 * 100 / window.innerHeight
+                    let dims = document.getElementById(input_id).getBoundingClientRect();
                     if (query_topics.length === 1) {
-                        document.getElementById(searchbox_autocomplete_id).style.top = "56%"
+                        document.getElementById(searchbox_autocomplete_id).style.top = dims.top+50+"px"
                     }
                     if (query_topics.length === 2) {
-                        document.getElementById(searchbox_autocomplete_id).style.top = "58.25%"
+                        document.getElementById(searchbox_autocomplete_id).style.top = dims.top+67+"px"
                     }
                     if (query_topics.length === 3) {
-                        document.getElementById(searchbox_autocomplete_id).style.top = "60.25%"
+                        document.getElementById(searchbox_autocomplete_id).style.top = dims.top+84+"px"
                     }
                     if (query_topics.length === 4) {
-                        document.getElementById(searchbox_autocomplete_id).style.top = "62.5%"
+                        document.getElementById(searchbox_autocomplete_id).style.top = dims.top+101+"px"
                     }
                 }
             }} onBlur={() => {
@@ -67,7 +103,7 @@ function Home() {
                     {
                         autocompleteTopics.map((value, index) => {
                             return <>
-                            <Link to={"/learn/"+value}>
+                            <Link to={"/learn/"+value} key={index}>
                                 <li key={index}>
                                     {value}
                                 </li>
