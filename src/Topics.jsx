@@ -4,7 +4,11 @@ export const topics = [
     "Python",
     "C",
     "Mechanics",
-    "Economics"
+    "Economics",
+    "Fortran",
+    "Quantum Computing",
+    "Artificial Intelligence",
+    "Blockchain"
 ]
 
 export const topics_urls = [
@@ -43,5 +47,30 @@ export const topics_urls = [
         urls: ["https://www.learn-economics.co.uk","https://www.lynalden.com/what-is-money/",'https://www.thoughtco.com/economics-for-beginners-4140372'],
         titles: ["Learn economics | Home","What is Money, Anyway? - Lyn Alden",'Economics for Beginners: Understanding the Basics'],
         densities: [65,75,68]
+    },
+    {
+        topic: "Fortran",
+        urls: ["https://fortran-lang.org/en/learn/quickstart/hello_world/","https://www.tutorialspoint.com/fortran/fortran_overview.htm","https://pages.mtu.edu/~shene/COURSES/cs201/NOTES/fortran.html"],
+        titles: ["Learn -- Fortran Programming Language","Fortran - Overview","Fortran 90 Tutorial"],
+        densities: [78, 46,93]
+    },
+    {
+        topic: "Quantum Computing",
+        urls: ["https://www.ibm.com/topics/quantum-computing","https://quantum.country/qcvc","https://www.quantamagazine.org/why-is-quantum-computing-so-hard-to-explain-20210608/"],
+        titles: ["What is Quantum Computing? | IBM","Quantum computing for the very curious","Why Is Quantum Computing So Hard To Explain | Quanta Magazine"],
+        densities: [96, 94,84]
+    },
+    {
+        topic: "Artificial Intelligence",
+        urls: ["https://www.ibm.com/cloud/learn/what-is-artificial-intelligence","https://distill.pub/2021/gnn-intro/", "https://thegradient.pub/a-science-journalists-journey-to-understand-ai/"],
+        titles: ['What is Artificial Intelligence (AI)? | IBM',"A Gentle Introduction to Graph Neural Networks","A Science Journalist’s Journey to Understand AI"],
+        densities: [70, 71, 69]
+    },
+    {
+        topic: "Blockchain",
+        urls: ["https://www.investopedia.com/terms/b/blockchain.asp","https://www.ibm.com/topics/what-is-blockchain","https://www.coindesk.com/learn/what-is-blockchain-technology/"],
+        titles: ["Blockchain Facts: What Is It, How It Works, and How It Can Be Used","What Is Blockchain? | IBM","Blockchain Technology Explained: What Is a Blockchain and How Does it Work?"],
+        densities: [89, 74, 73]
     }
 ]
+// 45 resources
