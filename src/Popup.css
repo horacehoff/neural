@@ -25,6 +25,10 @@
     padding-right: 10px;
     text-align: center;
 }
+.popup-content a {
+    text-decoration: none;
+    color: dodgerblue;
+}
 .popup-close {
     position: relative;
     left: 50%;
